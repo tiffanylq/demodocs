@@ -1,0 +1,84 @@
+---
+title: "Managing your app data"
+description: "Description of your new file."
+---
+
+## **Introduction**
+
+### **What is "Data" in Base44?**
+
+In Base44, **Data** refers to the structured information stored within your app, powering dynamic functionality such as users, content, orders, activities, and more.
+
+You manage this data through **tables** (similar to databases), where each table has **fields** (columns) representing different types of information.
+
+### **Common Use Cases**
+
+- Managing **users** (profiles, roles)
+- Storing **content** (products, blog posts)
+- Handling **orders** (e-commerce, reservations)
+- Collecting **activities** (event tracking, logs)
+
+### **Field Types**
+
+- **Text** (Short Text, Long Text)
+- **Number**
+- **Boolean** (Yes/No)
+- **Date/Time**
+- **File** (Images, Documents)
+- **Reference** (Link to another record/table)
+- **Object** (Nested structured data like JSON)
+
+### **Table Permissions**
+
+Each table has its own security settings, controlling who can **read** and **write** its data.
+
+🔒 **Read Access**: Who can view records\
+✍️ **Write Access**: Who can create, update, or delete records
+
+_Note: For a full explanation, see the _[_Security Dashboard guide_](https://docs.base44.com/GuidelineDetail?id=680b5baaaea9bfa3a4f275b6)_._
+
+---
+
+## **Working with Data**
+
+### **Manually Adding Records**
+
+- Go to **Workspace → Data**.
+- Select the relevant table.
+- Click **“\+ Add”** and fill out the fields manually.
+
+> **_Tip_**_: You can ask the chat to create a form inside your app to add new items dynamically._
+
+### **Uploading Data (CSV Import)**
+
+- First, export a **sample CSV** from your table to understand the correct format.
+- Prepare your data to match the sample structure.
+- Use **Import CSV** to upload your data.
+
+> **_Tip_**_: Always export a sample CSV first to prevent formatting errors._
+
+### **Deleting and Batch Operations**
+
+- To delete a single record, click the **🗑️ delete button** next to it.
+- To delete all records in a table, use **“Delete All”** under the **Actions** menu.
+- ⚠️ _Warning: Bulk deletion is irreversible._
+
+### **Connecting Your Data to Another App**
+
+- Go to **Workspace → Settings → API**.
+- Select the entity (table) you want to share.
+- Generate code examples for **reading** and **writing**.
+- Pass the generated code into the chat of another app to instruct it how to interact with your data.
+
+### **Data Creation Safety**
+
+- To protect your data:
+  - The AI Assistant can **only create** (add new records).
+  - It **cannot delete** or remove existing records.
+- **Example**: You can ask the chat to add mock data for testing, but even if you revert a message or request "deletion," your existing records will remain safe.
+
+### **Common Problems and Solutions**
+
+- **Problem:** Can't create, view, or edit my data
+- **Cause:** Permissions are restricted
+- **How to Fix:** Check your table's security settings under Workspace → App Security

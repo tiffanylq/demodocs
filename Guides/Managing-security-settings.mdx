@@ -1,0 +1,126 @@
+---
+title: "Managing security settings"
+description: "Description of your new file."
+---
+
+# **App security: Row-level security (RLS) guide**
+
+## **Overview**
+
+Control who can access, read, write, or delete records in your app’s data entities using **Row-Level Security (RLS)** rules. Configure access for each entity to ensure data is only available to authorized users.
+
+---
+
+## **When to use these features**
+
+### **Secure data handling**
+
+Use this when:
+
+- Sensitive or private data should **not be visible** to all users.
+- You want to avoid exposing **unintended records** through APIs, exports, or reports.
+- The app includes **user-generated content**, and each user should only access their own data.
+
+**Example use cases**:
+
+- A fitness app where each user should only see his training sessions.
+- A company dashboard where employees can only see their own performance metrics.
+
+### **User-specific data views**
+
+Use this when:
+
+- You want to **personalize the app experience** based on user role, department, or ownership.
+- Different users or roles should see **different subsets** of data.
+- You're building multi-tenant applications where users **should not see other tenants' data**.
+
+**Example use cases**:
+
+- A CRM where sales reps only see leads assigned to them.
+- A school app where teachers can only view students in their classes.
+- An admin panel where different roles (admin, editor, viewer) have different data access levels.
+
+---
+
+## **Accessing security settings**
+
+<Steps>
+  <Step title="Navigate to app security">
+    Open your app workspace and go to the "**Security**" tab.
+  </Step>
+  <Step title="View your dashboard">
+    In the security dashboard, you can see a list of your application data entities. Each entity shows its current security status: **Public** or **Restricted**.
+  </Step>
+  <Step title="Edit security rules">
+    Click on an entity to view or update its security rules.
+  </Step>
+</Steps>
+
+### **Security modes**
+
+- **Public Access (No Restrictions)** – All users can access all records in the entity.
+- **Resticted Acccess** – Only users matching defined rules can access records.
+
+---
+
+## **Assigning & managing rules**
+
+### Rule types
+
+When editing an entity’s security, you can define rules for:
+
+- **Read Access**
+- **Write/Delete Access**
+
+Each rule can be **one** of the following:
+
+- **No Restrictions** – All users can access records.
+- **Creator Only** – Users can only access records they created.
+- **Entity-User Field Comparison **– Compare a field in the entity (e.g., 'Organization') with a user property (e.g., user's 'Organization').
+  - _Example_: Only users whose department matches the record’s department can access it.
+- **User Property Check **– Restrict access based on a user property like 'role' or 'email'.
+  - _Example_: Only users with the role "admin" can access records.
+
+### How to add or edit rules
+
+<Steps>
+  <Step title="Choose access type">
+    Switch between **Read Access** and **Write/Delete Access** tabs.
+  </Step>
+  <Step title="Add rule">
+    Click **“Add Rule”**, select a rule type, and complete the required fields.
+  </Step>
+  <Step title="Multiple rules (optional)">
+    Add multiple rules if needed. Access is granted if any rule matches (or logic).
+  </Step>
+  <Step title="Custom write/delete rules">
+    By default, these inherit from Read Access. Click "**Create Custom Write Rules**" to define separate rules.
+  </Step>
+  <Step title="Remove rules">
+    You can click **Remove All Rules** to remove your entity security rules. Use **“Remove All Rules”** to make the entity public again.
+  </Step>
+</Steps>
+
+### Generated rules (JSON)
+
+All rules are shown as read-only JSON for transparency.
+
+### Example scenarios
+
+- **Public Entity**: No rules set. All users have access.
+- **Creator Only**: Add a rule so users can only see their own records.
+- **Department-Based Access**: Match the record's department field to the user's department.
+- Admin-Only Access: Use a role check. Only users with "**role = admin"** have access.
+
+### **Visual Summary**
+
+- Each entity card displays a summary of its current rules.
+- Icons and short descriptions indicate **Read** and **Write/Delete** settings.
+
+---
+
+## **Tips**
+
+- You must **create entities** before configuring security.
+- Changes are **saved per entity**.
+- Always click **“Save Security Rules”** after editing.

@@ -1,0 +1,52 @@
+---
+title: "Setting up a custom domain"
+description: "Description of your new file."
+---
+
+# Custom domain: Setup guide
+
+To connect a custom domain to your Base44 app, follow these steps:
+
+<Steps>
+  <Step title="Prepare your domain" titleSize="h3">
+    - Use only lowercase letters. Remove any trailing spaces or tabs.
+
+      <Note>
+        Domains with uppercase letters or extra whitespace won't verify correctly.
+      </Note>
+  </Step>
+  <Step title="Add the domain" titleSize="h3">
+    - Go to **Workspace → Domains**.
+    - Click **Add Domain** and enter your domain (e.g., [mycoolapp.com](http://mycoolapp.com)).
+  </Step>
+  <Step title="DNS configuration" titleSize="h3">
+    Set the following at your domain registrar:
+
+    - **ANAME / ALIAS Record** _(if supported)_
+      - **Name**: @
+    - **Value**: [base44.onrender.com](http://base44.onrender.com)
+    - **If ANAME isn't supported, use A Record instead**
+      - **Name**: @
+      - **Value**: 216.24.57.1\
+        ❗ Make sure this is the **only A record**
+    - **CNAME Record (www)**
+      - **Name**: www
+      - **Value**: [base44.onrender.com](http://base44.onrender.com)
+    - _Optional:_ **To connect a subdomain** (e.g., [good.example.com](http://good.example.com))
+      - **Name**: subdomain prefix (e.g., good)
+      - **Value**: [base44.onrender.com](http://base44.onrender.com)
+
+    ❌ Remove any **AAAA records**
+  </Step>
+  <Step title="Verify the domain" titleSize="h3">
+    - Go to **Workspace → Domains**.
+    - Click **Verify** next to your domain. 
+
+      <Tip>
+        DNS changes may take up to 48 hours.
+      </Tip>
+  </Step>
+  <Step title="Reusing domains from deleted apps" titleSize="h3">
+    If the domain was used in an app deleted **before June 5, 2025**, contact Support to clear it from Base44's records before reuse.
+  </Step>
+</Steps>
